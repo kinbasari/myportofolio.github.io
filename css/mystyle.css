@@ -1,6 +1,15 @@
 :root {
   --bash: #f4d430;
+  --alpa: #f7e378;
   --bg: #010101;
+  --kin: #133;
+  --pita: #e00;
+  --blok: #000;
+  --text: #fff;
+  --judul-font: "Kavoon", serif;
+  --badan-font: "Happy Monkey", serif;
+  --harga-font: "Rum Raisin", serif;
+  --bonus: "Miltonian Tattoo", serif;
 }
 
 * {
@@ -17,9 +26,9 @@ html {
 }
 
 body {
-  font-family: "Happy Monkey", serif;
+  font-family: var(--badan-font);
   background-color: var(--bg);
-  color: #fff;
+  color: var(--text);
 }
 
 /* navbar */
@@ -46,7 +55,7 @@ body {
   font-weight: 700;
   color: #fff;
   font-style: italic;
-  font-family: "Kavoon", serif;
+  font-family: var(--judul-font);
 }
 
 .navbar .navbar-logo span {
@@ -55,7 +64,7 @@ body {
 
 .navbar .navbar-nav a {
   color: #fff;
-  font-family: "Kavoon", serif;
+  font-family: var(--judul-font);
   display: inline-block;
   font-size: 1.2rem;
   margin: 0 1rem;
@@ -92,6 +101,98 @@ body {
   display: none;
 }
 
+/* navbar search form */
+.navbar .search-form {
+  position: absolute;
+  top: 100%;
+  right: 7%;
+  background-color: var(--kin);
+  width: 50rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: 0.5s;
+}
+
+.navbar .search-form.active {
+  transform: scaleY(1);
+}
+
+.navbar .search-form input {
+  height: 100%;
+  width: 100%;
+  font-size: 1.6rem;
+  color: var(--bg);
+  padding: 1rem;
+  background-color: var(--kin);
+  font-family: var(--badan-font);
+  color: var(--bash);
+}
+
+.navbar .search-form label {
+  cursor: pointer;
+  font-size: 2rem;
+  margin-right: 1.5rem;
+  color: var(--bash);
+}
+
+/* Shopping Cart */
+.shopping-cart {
+ position: absolute;
+ top: 100%;
+ right: -100%;
+ width: 30rem;
+ height: 100vh;
+ padding: 0 1.5rem;
+ background-color: #fff;
+ color: var(--bg);
+ transition: 0.8s linear;
+}
+
+.shopping-cart.active {
+  right: 0;
+}
+
+.shopping-cart .cart-item {
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed #666;
+  position: relative;
+}
+
+.shopping-cart img {
+height: 6rem;
+border-radius: 35%;
+}
+
+.shopping-cart h3 {
+  font-size: 1.6rem;
+  padding-bottom: 0.5rem;
+  font-family: var(--judul-font);
+}
+
+.shopping-cart .item-price {
+  font-size: 1.2rem;
+  font-family: var(--harga-font);
+}
+
+.shopping-cart .remove-item {
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.shopping-cart .remove-item:hover {
+  color: var(--pita);
+}
+
+
+
 /* Hero Section */
 .hero {
   min-height: 90vw;
@@ -111,7 +212,7 @@ body {
   width: 100%;
   height: 30%;
   bottom: 0;
-  background: linear-gradient(0deg, rgba(1,1,3,1) 8%, rgba(255,255,255,0) 50%);
+  background: linear-gradient(0deg, rgba(1,1,3,1) 8%, rgba(255,255,255,0) 70%);
 }
 
 .hero .content {
@@ -124,7 +225,7 @@ body {
   color: #fff;
   text-shadow: 1px 1px 3px rgba(1,1,1,0.8);
   line-height: 1.2;
-  font-family: "Kavoon", serif;
+  font-family: var(--judul-font);
 }
 
 .hero .content h1 span {
@@ -151,33 +252,34 @@ body {
   background-color: var(--bash);
   border-radius: 0.5rem;
   box-shadow: 1px 1px 3px rgba(1,1,3,0.5);
-  font-family: "Kavoon", serif;
+  font-family: var(--judul-font);
   font-style: italic;
 }
 
 /* Produk Section */
-.produk, .contact {
+.produk, .contact, .books  {
   padding: 6rem 7% 1.4rem;
   text-align: center;
 }
 
-.produk h2, .contact h2, .disclaimer h2 {
+.produk h2, .contact h2, .books h2, .about h2, .disclaimer h2 {
   margin-bottom: 1rem;
   text-align: left;
 }
 
 .produk p, .contact p {
-  max-width: 60rem;
+  max-width: 70rem;
   line-height: 1;
   margin: auto;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .produk .row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: flex-wrap;
   margin-top: 5rem;
-  justify-content: center;
+  justify-content: auto;
+  
 }
 
 .produk .row .menu-card {
@@ -187,14 +289,14 @@ body {
 
 .produk .row .menu-card img {
   border-radius: 50%;
-  width: 120px;
+  width: 100px;
   height: auto;
-  
 }
 
 .produk .row .menu-card .menu-card-tittle {
   margin: 1rem auto 0.5rem;
-  font-family: "Kavoon", serif;
+  font-family: var(--judul-font);
+  font-size: 2rem;
 }
 
 .produk .row .menu-card .tag-line {
@@ -203,8 +305,120 @@ body {
 
 .produk .menu-card .menu-card-price {
   color: var(--bash);
+  font-family: var(--harga-font);
 }
 
+.produk .row .btn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 2rem;
+  display: inline-block;
+  font-size: 1rem;
+  color: #000;
+  background-color: var(--bash);
+  font-family: var(--judul-font);
+  cursor: pointer;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 3px rgba(16,85,85,0.5);
+}
+
+/* Books Section */
+.books .row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+.books .book-card {
+  text-align: center;
+  border: 1px solid var(--alpa);
+  padding: 2rem;
+}
+
+.books .book-img {
+  padding: 1rem 0;
+}
+
+.books .book-img img {
+  height: 35rem;
+}
+
+.books .book-content h3, .modal .book-content h3 {
+  font-size: 3rem;
+  font-family: var(--judul-font);
+}
+
+.books .book-stars {
+  font-size: 1.7rem;
+  padding: 0.8rem;
+  color: var(--bash);
+}
+
+.books .book-stars .starsfll {
+  fill: var(--bash);
+}
+
+.books .book-price {
+  background-color: var(--alpa);
+  border-radius: 10px;
+  border: 2px dashed var(--pita);
+  padding: 3rem;
+  font-family: var(--harga-font);
+}
+
+.books .book-price span {
+  font-size: 0.5rem;
+  text-decoration: line-through;
+  color: var(--pita);
+}
+
+.books .book-price p {
+  font-size: 2rem;
+  text-align: center;
+  color: green;
+}
+
+.books .book-price .discon {
+  position: relative;
+  padding: 0;
+  font-size: 0.8rem;
+}
+
+.books .book-price .discon::before {
+  content: '35%';
+  position: absolute;
+  top: -35px;
+  right: -25px;
+  background-color: var(--pita);
+  color: #fff;
+  font-weight: bold;
+  padding: 5px 15px;
+  transform: rotate(0deg);
+  transform-origin: top-right;
+}
+
+.books .book-icons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.books .book-icons a {
+  width: 4rem;
+  height: 4rem;
+  color: #fff;
+  margin: 3rem;
+  border: 1px solid var(--alpa);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.books .book-icons a:hover {
+  background-color: var(--bash);
+  border:  1px solid var(--bash);
+}
 
 
 
@@ -230,14 +444,14 @@ body {
   background: linear-gradient(0deg, rgba(1,1,3,1) 8%, rgba(255,255,255,0) 50%);
 }
 
-.about .content h2, .produk h2, .disclaimer .content h2, .contact h2 {
+.about h2, .produk h2, .books h2, .disclaimer .content h2, .contact h2 {
   font-size: 3rem;
   margin-bottom: 3rem;
-  font-family: "Kavoon", serif;
+  font-family: var(--judul-font);
   font-style: italic;
 }
 
-.about .content h2 span, .produk h2 span {
+.about h2 span, .produk h2 span, .books h2 span {
   color: var(--bash);
 }
 
@@ -247,19 +461,25 @@ body {
   grid-column: span 1;
 }
 
-.about .content p, .disclaimer .content p {
-  margin-bottom: 0.8rem;
+.about .content p, .books p, .disclaimer .content p {
+  margin-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1;
 }
 
 /* Disclaimer Section */
 .disclaimer {
-  padding: 6rem 7% 1.4rem;
+  padding: 6rem 2% 1rem;
 }
-.disclaimer-me p {
-  max-width: 50rem;
-  margin: auto;
+.disclaimer .content p {
+  font-size: 0.8rem;
+  max-width: 90rem;
+  margin: 1;
+}
+.disclaimer .content p span {
+  font-weight: bold;
+  color: var(--bash);
+  
 }
 
 
@@ -280,7 +500,7 @@ body {
   flex: 1 1 45rem;
   padding: 5rem 2rem;
   text-align: center;
-  font-family: "Happy Monkey", serif;
+  font-family: var(--badan-font);
 }
 
 .contact .row form .input-group {
@@ -298,7 +518,7 @@ body {
   font-size: 1.7rem;
   background: none;
   color: var(--bash);
-  font-family: "Happy Monkey", serif;
+  font-family: var(--badan-font);
 }
 
 .contact .row form .btn {
@@ -308,7 +528,7 @@ body {
   font-size: 1.7rem;
   color: #000;
   background-color: var(--bash);
-  font-family: "Kavoon", serif;
+  font-family: var(--judul-font);
   cursor: pointer;
   border-radius: 0.5rem;
   box-shadow: 1px 1px 3px rgba(1,1,3,0.5);
@@ -320,7 +540,7 @@ footer {
   text-align: center;
   padding: 1rem 0 3rem;
   margin-top: 3rem;
-  color: #133;
+  color: var(--kin);
 }
 
 footer .socials {
@@ -328,7 +548,7 @@ footer .socials {
 }
 
 footer .socials a {
-  color: #133;
+  color: var(--kin);
   margin: 1rem;
 }
 
@@ -341,13 +561,88 @@ footer .links {
 }
 
 footer .links a {
-  color: #133;
+  color: var(--kin);
   padding: 0.7rem 1rem;
 }
 
+footer .credit {
+  font-size: 5rem;
+}
 footer .credit a {
-  color: #133;
+  color: var(--kin);
   font-weight: bold;
+  font-size: 5rem;
+}
+
+/* Modal Box */
+/* Item Detail */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal-container {
+  position: relative;
+  background-color: var(--kin);
+  color: #fff;
+  margin: 15% auto;
+  padding: 1.2rem;
+  border: 1px solid #666;
+  width: 80%;
+  animation: animateModal 0.5s;
+}
+
+/* Modal Animation */
+@keyframes animateModal {
+from {
+  top: -300px;
+  opacity: 0;
+}  
+to {
+  top: 0;
+  opacity: 1;
+}
+}
+
+.modal-container .close-icon {
+  position: absolute;
+  right: 1rem;
+  color: var(--text);
+}
+
+.modal-content {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.modal-content img {
+  height: 20rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  margin-top: 1.2rem;
+}
+
+.modal-content a {
+  display: flex;
+  gap: 1rem;
+  width: 12rem;
+  background-color: var(--bash);
+  color: var(--kin);
+  margin-top: 1rem;
+  padding: 1rem 1.6rem;
+  border-radius: 5px;
 }
 
 
@@ -361,6 +656,13 @@ footer .credit a {
   html {
     font-size: 75%;
   }
+  .about h2 {
+    font-size: 4.5rem;
+  }
+
+ footer .credit, footer .credit a {
+  font-size: 0.5rem;
+ }
 }
 /* Tablet */
 @media (max-width: 768px) {
@@ -399,9 +701,31 @@ footer .credit a {
     transform: scaleX(0.5);
   }
   
-  .produk p {
-    font-size: 1.2rem;
+  .navbar .search-form {
+    width: 90%;
+    right: 2rem;
   }
+  
+  .about h2, .books .book-price p {
+    font-size: 3rem;
+  }
+  
+  .produk p, .books p, .contact p {
+    font-size: 1.4rem;
+  }
+
+.books .book-price .discon, .books .book-price span {
+  font-size: 1.5rem;
+}
+
+.books .book-price .discon::before {
+  top: -20px;
+  right: -25px;
+}
+  
+  
+  
+  
   
   .about .row {
     flex-wrap: wrap;
@@ -428,6 +752,13 @@ footer .credit a {
   .disclaimer .disclaimer-me p {
     font-size: 1.2rem;
   }
+  footer .credit, footer .credit a {
+  font-size: 1rem;
+ }
+ 
+ .modal-content {
+   flex-wrap: wrap;
+ }
 }
 
 
