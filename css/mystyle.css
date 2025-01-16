@@ -109,7 +109,7 @@ body {
   position: absolute;
   top: 100%;
   right: 7%;
-  background-color: var(--bg);
+  background-color: var(--alpa);
   width: 50rem;
   height: 5rem;
   display: flex;
@@ -127,9 +127,8 @@ body {
   height: 100%;
   width: 100%;
   font-size: 1.6rem;
-  color: var(--bg);
   padding: 1rem;
-  background: var(--linear);
+  background: var(--alpa);
   font-family: var(--harga-font);
   color: var(--bg);
 }
@@ -138,7 +137,7 @@ body {
   cursor: pointer;
   font-size: 2rem;
   margin-right: 1.5rem;
-  color: var(--bash);
+  color: var(--bg);
 }
 
 /* Shopping Cart */
