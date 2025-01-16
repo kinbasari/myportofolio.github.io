@@ -45,25 +45,36 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// Modal Box
-const itemDetailModal = document.querySelector('#item-detail-modal-python');
-const itemDetailButton = document.querySelector('.item-detail-button');
+// Form validation
+const checkoutButton = document.querySelector('.checkout-button');
+checkoutButton.disabled = true;
 
-itemDetailButton.onclick = (e) => {
-  itemDetailModal.style.display = 'flex';
-  e.preventDefault();
-};
+const form = document.querySelector('#checkoutForm');
 
-// klik close modal
-document.querySelector('.modal .close-icon').onclick = (e) => {
-  itemDetailModal.style.display = 'none';
-  e.preventDefault();
-};
-
-// klik diluar modal
-const modal = document.querySelector('#item-detail-modal-python');
-window.onclick = (e) => {
-  if (e.target === modal) {
-    modal.style.display = 'none';
+form.addEventListener('keyup', function() {
+  for(let i = 0; i < form.elements.length; i++) {
+    if(form.elements[i].value.length !== 0) {
+      checkoutButton.classList.remove('disabled');
+      checkoutButton.classList.add('disabled');
+    } else {
+      return false;
+    }
   }
-}
+  checkoutButton.disabled = false;
+  checkoutButton.classList.remove('disabled');
+});
+
+function showPopup() {
+  document.getElementById('popup').style.display = 'block';
+  }
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+  }
+  
+  
+  function showPopup() {
+  document.getElementById('popup').style.display = 'block';
+  }
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+  }
