@@ -12,12 +12,17 @@
   
   
   <!-- mystyle -->
+  
+<!-- Alpine style -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+<!-- my aplikasi -->
+<script src="javascript/aplikasi.js"></script>
   
 </head>
 <body>
 <!-- navbar start -->
-<nav class="navbar">
+<nav class="navbar" x-data>
   <a href="#" class="navbar-logo"><span>Kin</span>Basari</a>
   
   <div class="navbar-nav">
@@ -30,7 +35,10 @@
   </div>
   <div class="navbar-extra">
     <a href="#" id="search-button"><i data-feather="search"></i></a>
-    <a href="#" id="shopping-cart-button"><i data-feather="shopping-cart"></i></a>
+    <a href="#" id="shopping-cart-button">
+      <i data-feather="shopping-cart"></i>
+    <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
+    </a>
     <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
   </div>
   
@@ -43,15 +51,43 @@
   
 <!-- shopping cart start -->
 <div class="shopping-cart">
+  <template x-for="(item, index) in $store.cart.items" x-key="index">
   <div class="cart-item">
-    <img src="img/imgpython.png" alt="Book Python">
+    <img :src="`books/${item.img}`" :alt="item.name">
     <div class="item-detail">
-      <h3>Mahir Python</h3>
-      <div class="item-price">Rp 230.000,00</div>
+      <h3 x-text="item.name"></h3>
+      <div class="item-price">
+        <span x-text="rupiah(item.price)"></span> 
+        <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+        <span x-text="item.quantity"></span>
+        <button id="add" @click="$store.cart.add(item)">&plus;</button> 
+        <span x-text="rupiah(item.tottal)"></span>
+      </div>
     </div>
-    <i data-feather="trash-2" class="remove-item"></i>
   </div>
+  </template>
+  <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem;">Cart Is Empty</h4>
+  <h4 x-show="$store.cart.items.length" style="text-align: right;">Total = <span x-text="rupiah($store.cart.tottal)"></span></h4>
   
+  <div class="form-container">
+    <form x-show="$store.cart.items.length" id="checkoutForm">
+      <h5>Costomer Detail</h5>
+      
+      <label for="name">
+        <span>Name</span>
+        <input type="text" name="Name" id="name">
+      </label>
+      <label for="email">
+        <span>Email</span>
+        <input type="text" name="Email" id="email">
+      </label>
+      <label for="nohp">
+        <span>No. Hp</span>
+        <input type="number" name="phone" id="phone" autocomplete="off">
+      </label>
+      <button class="checkout-button disabled" type="submit" id="checkout-button" value="checkout" @click.prevent="showPopup()">ChekOut</button>
+    </form>
+  </div>
 </div>
 <!-- shopping cart end -->
 </nav>
@@ -74,14 +110,14 @@
   <p>Menyediakan jasa pembuatan website online shop, website portofolio, aplikasi, dan game terpercaya dengan harga terjangkau. Setiap proyek dikerjakan dengan profesionalisme tinggi dan perhatian terhadap detail, memastikan hasil yang memuaskan dan sesuai dengan keinginanmu. Mari bekerja sama untuk menciptakan solusi digital terbaik bagi bisnis atau proyek pribadimu.</p>
   <div class="row">
     <div class="menu-card">
-      <img src="img/images03.png" alt= Jasa Create Olshop class="menu-card-img">
-      <h3 class="menu-card-tittle">Jasa buat web Onlineshop</h3>
+      <img src="jasa/imgjasa02.png" alt= Jasa Create Olshop class="menu-card-img">
+      <h3 class="menu-card-tittle">Jasa buat <span>web Onlineshop</span></h3>
       <p class="tag-line">Jasa pembuatan website online shop profesional untuk meningkatkan penjualan dan memperluas jangkauan bisnismu. Dengan desain responsif, fitur lengkap, integrasi pembayaran, dan kemudahan pengelolaan. Cocok untuk berbagai jenis produk dan layanan.</p>
       <p class="menu-card-price">Rp 315.000,00</p>
     </div>
     <div class="menu-card">
-      <img src="img/images03.png" alt="Jasa Create Website" class="menu-card-img">
-      <h3 class="menu-card-tittle">Jasa buat web Portofolio</h3>
+      <img src="jasa/imgjasa02.png" alt="Jasa Create Website" class="menu-card-img">
+      <h3 class="menu-card-tittle">Jasa buat <span>web Portofolio</span></h3>
       <p class="tag-line">Jasa pembuatan website portofolio profesional untuk menampilkan karya dan pencapaianmu secara elegan. Dengan menghadirkan desain modern, responsif, dan mudah diakses, sehingga portofoliomu dapat menarik perhatian klien atau perekrut dengan tampilan yang menonjol dan navigasi yang intuitif.</p>
       <p class="menu-card-price">Rp 110.000,00</p>
       
@@ -89,8 +125,8 @@
     </div>
    <div class="row">
     <div class="menu-card">
-      <img src="img/images03.png" alt= Jasa Create Olshop class="menu-card-img">
-      <h3 class="menu-card-tittle">Jasa buat Aplikasi</h3>
+      <img src="jasa/imgjasa02.png" alt= Jasa Create Olshop class="menu-card-img">
+      <h3 class="menu-card-tittle">Jasa buat <span>Aplikasi</span></h3>
       <p class="tag-line">jasa pembuatan aplikasi dan Game online, maupun offline untuk platform mobile dan desktop. Sedikit pengalaman dan keahlianku dalam teknologi, aku siap membantumu mengembangkan aplikasi yang sesuai dengan kebutuhan bisnis atau proyek pribadi. Mulai dari perancangan, pengembangan, hingga pengujian. Akan Ku pastikan setiap tahap dikerjakan dengan profesionalisme tinggi untuk menghasilkan aplikasi yang fungsional, user-friendly, dan sesuai dengan harapan. Baik untuk Android, iOS, maupun desktop.</p>
       <p class="menu-card-price">Rp 405.000,00</p>
     </div>
@@ -100,138 +136,41 @@
 <!-- Produk section end -->
 
 <!-- Buku Section start -->
-<section class="books" id="books">
+<section class="books" id="books" x-data="books">
   <h2>Books<span>Me</span></h2>
   <p>Temukan koleksi lengkap untuk berbagai bahasa pemrograman seperti Python, JavaScript, PHP, C#, dan lainnya. Tingkatkan keterampilan codingmu dengan buku-buku berkualitas yang tersedia dengan harga terjangkau.</p>
   
   <div class="row">
+    <template x-for="(item, index) in items" x-key="index">
     <div class="book-card">
     <div class="book-img">
-      <img src="img/imgpython.png" alt="Book python">
+      <img :src="`books/${item.img}`" :alt="item.name">
     </div>
     <div class="book-content">
-      <h3>Mahir Python</h3>
+      <h3 x-text="item.name"></h3>
       <div class="book-stars">
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star"></i>
-        <i data-feather="star"></i>
+        <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <use href="img/feather-sprite.svg#star" /></svg>
+        <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <use href="img/feather-sprite.svg#star" /></svg>
+        <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <use href="img/feather-sprite.svg#star" /></svg>
+        <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <use href="img/feather-sprite.svg#star" /></svg>
+        <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <use href="img/feather-sprite.svg#star" /></svg>
       </div>
-      <div class="book-price"> <div class="discon"></div><span>Rp460.000,00</span><p>Rp299.000</p>
+      <div class="book-price"> <div class="discon"></div><span x-text="rupiah(item.coret)"></span><p x-text="rupiah(item.price)"></p>
       </div>
       </div>
-          <div class="book-icons">
-      <a href="#"><i data-feather="shopping-cart"></i></a>
-      <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
-      </div>
-    </div>
-    
-    <div class="book-card">
-    <div class="book-img">
-      <img src="img/imgruby.png" alt="Book Ruby">
-    </div>
-    <div class="book-content">
-      <h3>Mahir Ruby</h3>
-      <div class="book-stars">
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star"></i>
-        <i data-feather="star"></i>
-      </div>
-      <div class="book-price"> <div class="discon"></div><span>Rp370.000,00</span><p>Rp240.500</p></div>
-      </div>
-          <div class="book-icons">
-      <a href="#"><i data-feather="shopping-cart"></i></a>
-      <a href="#"><i data-feather="eye"></i></a>
+      <div class="book-icons">
+      <a href="#" @click.prevent="$store.cart.add(item)">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <use href="img/feather-sprite.svg#shopping-cart" />
+        </svg>
+      </a>
+      
+      <a href="#" @click.prevent="showPopup()">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <use href="img/feather-sprite.svg#eye" />
+        </svg>
+      </a>
       </div>
     </div>
-    
-    <div class="book-card">
-    <div class="book-img">
-      <img src="img/imgphp.png" alt="Book PHP">
-    </div>
-    <div class="book-content">
-      <h3>Mahir PHP</h3>
-      <div class="book-stars">
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star"></i>
-        <i data-feather="star"></i>
-      </div>
-      <div class="book-price"> <div class="discon"></div><span>Rp400.000,00</span><p>Rp260.000</p></div>
-      </div>
-          <div class="book-icons">
-      <a href="#"><i data-feather="shopping-cart"></i></a>
-      <a href="#"><i data-feather="eye"></i></a>
-      </div>
-    </div>
-   
-    <div class="book-card">
-    <div class="book-img">
-      <img src="img/imgcfance.png" alt="Book C#">
-    </div>
-    <div class="book-content">
-      <h3>Mahir C#</h3>
-      <div class="book-stars">
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star"></i>
-        <i data-feather="star"></i>
-      </div>
-      <div class="book-price"> <div class="discon"></div><span>Rp365.000,00</span><p>Rp237.250</p></div>
-      </div>
-          <div class="book-icons">
-      <a href="#"><i data-feather="shopping-cart"></i></a>
-      <a href="#"><i data-feather="eye"></i></a>
-      </div>
-    </div>
-    
-    <div class="book-card">
-    <div class="book-img">
-      <img src="img/imgcplus.png" alt="Book C++">
-    </div>
-    <div class="book-content">
-      <h3>Mahir C++</h3>
-      <div class="book-stars">
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star"></i>
-        <i data-feather="star"></i>
-      </div>
-      <div class="book-price"> <div class="discon"></div><span>Rp320.000,00</span><p>Rp208.000</p></div>
-      </div>
-          <div class="book-icons">
-      <a href="#"><i data-feather="shopping-cart"></i></a>
-      <a href="#"><i data-feather="eye"></i></a>
-      </div>
-    </div>
-    
-    <div class="book-card">
-    <div class="book-img">
-      <img src="img/imgjavascript.png" alt="Book Javascript">
-    </div>
-    <div class="book-content">
-      <h3>Mahir JS</h3>
-      <div class="book-stars">
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star"></i>
-        <i data-feather="star"></i>
-      </div>
-      <div class="book-price"> <div class="discon"></div><span>Rp240.000,00</span><p>Rp156.000</p></div>
-      </div>
-          <div class="book-icons">
-      <a href="#"><i data-feather="shopping-cart"></i></a>
-      <a href="#"><i data-feather="eye"></i></a>
-      </div>
-    </div>
-   
+    </template>
   </div>
 </section>
 <!-- Buku Section end -->
@@ -317,143 +256,22 @@
 <!-- Footer end -->
 
 <!-- Modal box item detail start -->
-<div class="modal" id="item-detail-modal-python">
-  <div class="modal-container">
-    <a href="#" class="close-icon"><i data-feather="x"></i></a>
-    <div class="modal-content">
-      <img src="img/imgpython.png" alt="Book Python">
-      <div class="book-content">
-        <h3>Mahir Python</h3>
-        <p>Buku ini membahas dasar-dasar hingga konsep lanjutan Python, termasuk sintaks, manipulasi data, dan pengembangan aplikasi. Cocok untuk pemula dan pengembang berpengalaman.</p>
-       <div class="book-stars">
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star"></i>
-        <i data-feather="star"></i>
-       </div>
-        <div class="book-price"><span>Rp460.000,00</span><p>Rp230.000</p>
-          </div>
-        <a href="#"><i data-feather="shopping-cart"></i> <span>add to cart</span></a>
-      
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal" id="item-detail-modal-ruby">
-  <div class="modal-container">
-    <a href="#" class="close-icon"><i data-feather="x"></i></a>
-    <div class="modal-content">
-      <img src="img/imgruby.png" alt="Book Ruby">
-      <div class="book-content">
-        <h3>Mahir Ruby</h3>
-        <p>Buku ini membahas Ruby dari dasar hingga pengembangan aplikasi web dengan framework Ruby on Rails, termasuk sintaks Ruby yang elegan dan prinsip-prinsip pengembangan yang efektif.</p>
-       <div class="book-stars">
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star"></i>
-        <i data-feather="star"></i>
-       </div>
-        <div class="book-price"><span>Rp460.000,00</span><p>Rp230.000</p>
-          </div>
-        <a href="#"><i data-feather="shopping-cart"></i> <span>add to cart</span></a>
-      
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal" id="item-detail-modal-php">
-  <div class="modal-container">
-    <a href="#" class="close-icon"><i data-feather="x"></i></a>
-    <div class="modal-content">
-      <img src="img/imgphp.png" alt="Book Php">
-      <div class="book-content">
-        <h3>Mahir Python</h3>
-        <p>Buku ini mencakup pengenalan PHP, pengembangan aplikasi web dinamis, integrasi dengan database, dan praktik terbaik dalam pengembangan web menggunakan PHP.</p>
-       <div class="book-stars">
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star"></i>
-        <i data-feather="star"></i>
-       </div>
-        <div class="book-price"><span>Rp460.000,00</span><p>Rp230.000</p>
-          </div>
-        <a href="#"><i data-feather="shopping-cart"></i> <span>add to cart</span></a>
-      
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal" id="item-detail-modal-cfance">
-  <div class="modal-container">
-    <a href="#" class="close-icon"><i data-feather="x"></i></a>
-    <div class="modal-content">
-      <img src="img/imgcfance.png" alt="Book C Fance">
-      <div class="book-content">
-        <h3>Mahir C#</h3>
-        <p>Buku ini membahas C# dari dasar hingga pengembangan aplikasi desktop, web, dan game menggunakan .NET framework dan Unity, dengan fokus pada sintaks yang modern dan efisien.</p>
-       <div class="book-stars">
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star"></i>
-        <i data-feather="star"></i>
-       </div>
-        <div class="book-price"><span>Rp460.000,00</span><p>Rp230.000</p>
-          </div>
-        <a href="#"><i data-feather="shopping-cart"></i> <span>add to cart</span></a>
-      
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal" id="item-detail-modal-cplus">
-  <div class="modal-container">
-    <a href="#" class="close-icon"><i data-feather="x"></i></a>
-    <div class="modal-content">
-      <img src="img/imgcplus.png" alt="Book C Plus">
-      <div class="book-content">
-        <h3>Mahir C++</h3>
-        <p>Buku ini Mencakup konsep dasar hingga lanjutan C++, termasuk OOP, manajemen memori, dan pengembangan aplikasi performa tinggi seperti game dan perangkat lunak sistem.</p>
-       <div class="book-stars">
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star"></i>
-        <i data-feather="star"></i>
-       </div>
-        <div class="book-price"><span>Rp460.000,00</span><p>Rp230.000</p>
-          </div>
-        <a href="#"><i data-feather="shopping-cart"></i> <span>add to cart</span></a>
-      
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal" id="item-detail-modal-js">
-  <div class="modal-container">
-    <a href="#" class="close-icon"><i data-feather="x"></i></a>
-    <div class="modal-content">
-      <img src="img/imgjavascript.png" alt="Book Javascript">
-      <div class="book-content">
-        <h3>Mahir JS</h3>
-        <p>Buku ini mengulas JavaScript dari dasar hingga tingkat lanjut, termasuk DOM manipulation, AJAX, dan pengembangan aplikasi web modern menggunakan framework seperti React dan Node.js.</p>
-       <div class="book-stars">
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star" class="starsfll"></i>
-        <i data-feather="star"></i>
-        <i data-feather="star"></i>
-       </div>
-        <div class="book-price"><span>Rp460.000,00</span><p>Rp230.000</p>
-          </div>
-        <a href="#"><i data-feather="shopping-cart"></i> <span>add to cart</span></a>
-      
-      </div>
-    </div>
-  </div>
+<div class="popup-overlay" id="popup">
+ <div class="popup-content">
+ <h2>Terima Kasih</h2>
+ <p></p>
+ <br>
+ <img src="books/imgpython.png" alt="books 1"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+ <img src="books/imgruby.png" alt="books 2"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+ <img src="books/imgphp.png" alt="books 3">
+ <p></p>
+ <img src="books/imgcfance.png" alt="books 4"> &nbsp; &nbsp; &nbsp;
+ <img src="books/imgcplus.png" alt="books 5"> &nbsp; &nbsp; &nbsp;
+ <img src="books/imgjavascript.png" alt="books 6">
+ <hr>
+ <p>Mohon maaf atas ketidak nyamanannya, stok produk buku kami saat ini sedang masih dalam proses penertiban. Aku pribadi masih dalam tahap melakukan pengecekan serta pembaruan data untuk memastikan ketersediaan produk sesuai dengan informasi terkini. Mohon kesabarannya selama proses ini berlangsung. Terima kasih atas pengertiannya.</p>
+ <button onclick="closePopup()" class="close-popup">Tutup</button>
+ </div>
 </div>
 <!-- Modal box item detail end -->
 
