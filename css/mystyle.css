@@ -10,7 +10,7 @@
   --harga: #008000;
   --linear: linear-gradient(45deg, #f4d430, #000);
   --judul-font: "Kavoon", serif;
-  --badan-font: "Happy Monkey", serif;
+  --badan-font: "Nunito", serif;
   --harga-font: "Rum Raisin", serif;
   --bonus: "Miltonian Tattoo", serif;
 }
@@ -32,6 +32,7 @@ body {
   font-family: var(--badan-font);
   background-color: var(--bg);
   color: var(--text);
+  font-size: 1.4rem;
 }
 
 /* navbar */
@@ -329,10 +330,11 @@ box-shadow: 1px 1px 3px #133;
 }
 
 .hero .content p {
-  font-size: 1.2rem;
+  font-size: ;
   margin-top: 1rem;
   line-height: 1.3;
-  font-weight: bold;
+  font-weight: 200;
+  font-style: italic;
   text-shadow: 1px 1px 2px var(--bg);
   mix-blend-mode: differenc;
   color: var(--text);
@@ -343,7 +345,7 @@ box-shadow: 1px 1px 3px #133;
   margin-top: 1rem;
   display: inline-block;
   padding: 1rem 3rem;
-  font-size: 1.4rem;
+  font-size: ;
   color: var(--bg);
   background-color: var(--bash);
   border-radius: 0.5rem;
@@ -367,7 +369,7 @@ box-shadow: 1px 1px 3px #133;
   max-width: 70rem;
   line-height: 1;
   margin: auto;
-  font-size: 0.8rem;
+  font-size: rem;
 }
 
 .produk .row {
@@ -401,7 +403,7 @@ box-shadow: 1px 1px 3px #133;
 }
 
 .produk .row .menu-card .tag-line {
-  font-size: 8px;
+  font-style: italic;
 }
 
 .produk .menu-card .menu-card-price {
@@ -413,7 +415,7 @@ box-shadow: 1px 1px 3px #133;
   margin-top: 0.5rem;
   padding: 0.5rem 2rem;
   display: inline-block;
-  font-size: 1rem;
+  font-size: rem;
   color: var(--bg);
   background-color: var(--bash);
   font-family: var(--judul-font);
@@ -451,7 +453,7 @@ box-shadow: 1px 1px 3px #133;
 }
 
 .books .book-stars {
-  font-size: 1.7rem;
+  font-size: ;
   padding: 0.8rem;
   color: var(--bash);
 }
@@ -469,13 +471,13 @@ box-shadow: 1px 1px 3px #133;
 }
 
 .books .book-price span {
-  font-size: 0.5rem;
+  font-size: 1.2rem;
   text-decoration: line-through;
   color: var(--pita);
 }
 
 .books .book-price p {
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-align: center;
   color: var(--harga);
 }
@@ -483,7 +485,7 @@ box-shadow: 1px 1px 3px #133;
 .books .book-price .discon {
   position: relative;
   padding: 0;
-  font-size: 0.8rem;
+  font-size: ;
 }
 
 .books .book-price .discon::before {
@@ -546,7 +548,7 @@ box-shadow: 1px 1px 3px #133;
   background: linear-gradient(0deg, rgba(1,1,3,1) 8%, rgba(255,255,255,0) 50%);
 }
 
-.about h2, .produk h2, .books h2, .disclaimer .content h2, .contact h2 {
+.about h2, .produk h2, .books h2, .disclaimer h2, .contact h2 {
   font-size: 3rem;
   margin-bottom: 3rem;
   font-family: var(--judul-font);
@@ -563,9 +565,9 @@ box-shadow: 1px 1px 3px #133;
   grid-column: span 1;
 }
 
-.about .content p, .books p, .disclaimer .content p {
+.about p, .disclaimer p {
   margin-bottom: 0.5rem;
-  font-size: 1rem;
+  text-align: justify;
   line-height: 1;
 }
 
@@ -575,14 +577,12 @@ box-shadow: 1px 1px 3px #133;
 }
 
 .disclaimer .content p {
-  font-size: 0.8rem;
   max-width: 90rem;
   margin: 1;
 }
 .disclaimer .content p span {
   font-weight: bold;
   color: var(--bash);
-  
 }
 
 
@@ -640,7 +640,7 @@ box-shadow: 1px 1px 3px #133;
 
 /* Footer */
 footer {
-  background-color: var(--bash);
+  background-color: var(--alpa);
   text-align: center;
   padding: 1rem 0 3rem;
   margin-top: 3rem;
@@ -657,7 +657,9 @@ footer .socials a {
 }
 
 footer .socials a:hover, footer .links a:hover, footer .credit a:hover {
-  color: var(--text);
+  color: var(--pita);
+  font-style: italic;
+  font-weight: 800;
 }
 
 footer .links {
@@ -670,12 +672,12 @@ footer .links a {
 }
 
 footer .credit {
-  font-size: 5rem;
+  font-style: italic;
 }
 footer .credit a {
   color: var(--kin);
-  font-weight: bold;
-  font-size: 5rem;
+  font-weight: 800;
+  font-size: rem;
 }
 
 /* Pesan pop-up */
@@ -713,18 +715,17 @@ footer .credit a {
 }
 
 .popup-content img {
-  width: 8rem;
-  height: 11rem;
+  width: 7rem;
+  height: 10rem;
   text-align: justify;
   border: 1px solid var(--bg);
   margin: 1rem auto;
   box-shadow: 1px 1px 3px var(--kin);
 }
 
-.popup-content p {
+.popup-content .popup-paragraph {
   text-align: justify;
   color: var(--bg);
-  font-size: 2rem;
   margin: 1rem auto;
 }
 
@@ -735,7 +736,7 @@ footer .credit a {
  font-size: 1rem;
  border-radius: 7px;
  box-shadow: 1px 1px 3px var(--bg);
- margin: 8rem -5rem;
+ margin: 2rem 0;
  cursor: pointer;
  font-family: var(--badan-font);
  }
@@ -753,11 +754,11 @@ footer .credit a {
     font-size: 75%;
   }
   .about h2 {
-    font-size: 4.5rem;
+    font-size: ;
   }
 
  footer .credit, footer .credit a {
-  font-size: 0.5rem;
+  font-size: ;
  }
 }
 /* Tablet */
@@ -788,7 +789,7 @@ footer .credit a {
     display: block;
     margin: 1.5rem;
     padding: 0.5rem;
-    font-size: 2rem;
+    font-size: ;
   }
   .navbar .navbar-nav a::after {
     transform-origin: 0 0;
@@ -804,15 +805,15 @@ footer .credit a {
   }
   
   .about h2, .books .book-price p {
-    font-size: 3rem;
+    font-size: ;
   }
   
   .produk p, .books p, .contact p {
-    font-size: 1.4rem;
+    font-size: ;
   }
 
 .books .book-price .discon, .books .book-price span {
-  font-size: 1.5rem;
+  font-size: ;
 }
 
 .books .book-price .discon::before {
@@ -850,7 +851,7 @@ footer .credit a {
     font-size: 1.2rem;
   }
   footer .credit, footer .credit a {
-  font-size: 1rem;
+  font-size: ;
  }
  
  .modal-content {
