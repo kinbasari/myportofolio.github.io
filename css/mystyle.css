@@ -360,7 +360,7 @@ box-shadow: 1px 1px 3px #133;
   text-align: center;
 }
 
-.produk h2, .contact h2, .books h2, .about h2, .disclaimer h2 {
+.produk h2, .contact h2, .books h2, .about h2, .minigame h2, .disclaimer h2 {
   margin-bottom: 1rem;
   text-align: left;
 }
@@ -548,35 +548,100 @@ box-shadow: 1px 1px 3px #133;
   background: linear-gradient(0deg, rgba(1,1,3,1) 8%, rgba(255,255,255,0) 50%);
 }
 
-.about h2, .produk h2, .books h2, .disclaimer h2, .contact h2 {
+.about h2, .produk h2, .books h2, .disclaimer h2, .minigame h2, .contact h2 {
   font-size: 3rem;
   margin-bottom: 3rem;
   font-family: var(--judul-font);
   font-style: italic;
 }
 
-.about h2 span, .produk h2 span, .books h2 span {
+.about h2 span, .produk h2 span, .books h2 span, .minigame h2 span {
   color: var(--bash);
 }
 
-.about .content, .disclaimer .content {
+.about .content, .minigame .content, .disclaimer .content {
   flex: 1 1 35rem;
   padding: 0 1rem;
   grid-column: span 1;
 }
 
-.about p, .disclaimer p {
+.about p, .minigame .content p, .disclaimer p {
   margin-bottom: 0.5rem;
   text-align: justify;
   line-height: 1;
+  font-size: 1.4rem;
 }
 
+/* Mini Game Section */
+.minigame .content #bgvideo {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+.minigame .minigame-buttons {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 0;
+ max-width: 100%;
+ margin: 0;
+ }
+ 
+ .minigame .minigame-buttons button {
+   width: 96%;
+   height: 5vh;
+   margin: 1rem;
+   font-size: 2vh;
+   color: var(--text)
+   font-family: var(--badan-font);
+   cursor: pointer;
+   background-color: var(--harga);
+   border: 1px solid var(--bash);
+   box-shadow: 0 1.5rem var(--bash);
+   border-radius: 7px;
+   }
+
+ .minigame .minigame-buttons button:active { 
+   box-shadow: 0 0.5rem var(--bash);
+   background-color: var(--btn);
+   transform: translateY(1rem);
+ }
+ 
+ .minigame .minigame-buttons .game-btn {
+   font-family: var(--badan-font);
+ }
+ 
+ 
+ /* crek */
+/* choices button {
+  width: 30wh;
+  height: 10vh;
+  background-color: var(--bg);
+  font-family: var(--badan2-font);
+  color: var(--bg);
+  font-weight: bold;
+  font-size: 7rem;
+  border: 1px solid var(--bash);
+  border-radius: 7px;
+  box-shadow: 0 2rem var(--bash);
+  margin: 2px;
+  cursor: pointer;
+  }
+  
+.choices button:hover {
+background-color: #000;
+}
+  
+.choices button:active {
+box-shadow: 0 5px var(--bash);
+transform: translateY(2.5rem);
+} */
+
 /* Disclaimer Section */
-.disclaimer {
+.disclaimer, .minigame {
   padding: 6rem 2% 1rem;
 }
 
-.disclaimer .content p {
+.disclaimer .content p, .minigame p {
   max-width: 90rem;
   margin: 1;
 }
@@ -743,8 +808,7 @@ footer .credit a {
  
  
  
- 
- 
+
 
 
 /* Media Queries */
@@ -789,7 +853,7 @@ footer .credit a {
     display: block;
     margin: 1.5rem;
     padding: 0.5rem;
-    font-size: ;
+    font-size: 2rem;
   }
   .navbar .navbar-nav a::after {
     transform-origin: 0 0;
@@ -847,7 +911,7 @@ footer .credit a {
   .contact .row form {
     padding-top: 0;
   }
-  .disclaimer .disclaimer-me p {
+  .disclaimer p, .minigame p {
     font-size: 1.2rem;
   }
   footer .credit, footer .credit a {
