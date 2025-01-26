@@ -12,6 +12,18 @@
   
   
   <!-- mystyle -->
+<style>
+.hidden {
+  display: none;
+}
+.game-container {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+</style>
   
 <!-- Alpine style -->
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -26,10 +38,10 @@
   <a href="#" class="navbar-logo"><span>Kin</span>Basari</a>
   
   <div class="navbar-nav">
-    <a href="#home">Home</a>
     <a href="#produk">Produk<span>Me</span></a>
     <a href="#books">Books<span>Me</span></a>
     <a href="#about">About<span>Me</span></a>
+    <a href="#minigame">Mini<span>game</span></a>
     <a href="#disclaimer">Disclaimer</a>
     <a href="#contact">Contact</a>
   </div>
@@ -192,6 +204,34 @@
 </section>
 <!-- About Section end -->
 
+<!-- Mini Game start -->
+<section id="minigame" class="minigame">
+  <div class="content">
+    <h2>Mini<span>game</span></h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit numquam facere maiores dolorum ad, libero magnam.</p>
+    <p><main class="content">
+    <video autoplay muted loop id="bgvideo">
+  <source src="books/bgvideo.mp4" type="video/mp4">
+</video></p>
+    <p></p><br>
+     <div class="minigame-buttons">
+      <button href="https://kinbasari.github.io/minigameguesscolor" class="game-btn">Game 01</button>
+      <button class="game-btn" href="https://kinbasari.github.io/minigamessuitgames">Game 02</button>
+      <button class="game-btn">Game 03</button>
+      <button class="game-btn">Game 04</button>
+      <button class="game-btn">Game 05</button>
+      <button class="game-btn">Game 06</button>
+      <button class="game-btn">Game 07</button>
+      <button class="game-btn">Game 08</button>
+      <button class="game-btn">Game 09</button>
+      <button class="game-btn">Game 10</button>
+      <button class="game-btn">Game 11</button>
+      <button class="game-btn">Game 12</button>
+     </div>
+ </div>
+</section>
+<!-- Mini Game end -->
+
 <!-- Disclaimer start -->
 <section id="disclaimer" class="disclaimer">
   <div class="content">
@@ -276,6 +316,10 @@
 </div>
 <!-- Modal box item detail end -->
 
+
+<!-- Pop up game start -->
+
+<!-- Pop up game end -->
 <!--feather icons-->
 <script>
   feather.replace()
