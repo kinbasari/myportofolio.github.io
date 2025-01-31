@@ -780,12 +780,10 @@ footer .credit a {
 }
 
 .popup-content img {
-  width: 7rem;
-  height: 10rem;
+  width: 30rem;
+  height: 17rem;
   text-align: justify;
-  border: 1px solid var(--bg);
   margin: 1rem auto;
-  box-shadow: 1px 1px 3px var(--kin);
 }
 
 .popup-content .popup-paragraph {
