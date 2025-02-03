@@ -54,6 +54,23 @@ body {
   color: var(--bash);
 }
 
+.navbar .navbar-menu {
+  top: 40px;
+  left: 0;  
+}
+.navbar .navbar-menu a {
+  color: var(--text);
+  margin: 0 0.5rem;
+}
+
+.navbar .navbar-menu a:hover {
+  color: var(--bash);
+}
+
+#hamburger-menu {
+  display: none;
+}
+
 .navbar .navbar-logo {
   font-size: 3rem;
   font-weight: 700;
@@ -834,15 +851,15 @@ footer .credit a {
   .navbar .navbar-nav {
     position: absolute;
     top: 100%;
-    right: -100%;
+    left: -100%;
     background-color: var(--text);
-    width: 30rem;
+    width: 20rem;
     height: 100vh;
     transition: 0.8s;
   }
   
   .navbar .navbar-nav.active {
-    right: 0;
+    left: 0;
     background: var(--linear);
   }
   
